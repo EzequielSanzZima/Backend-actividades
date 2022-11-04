@@ -1,0 +1,26 @@
+[
+    {
+        "name":"Shirt",
+        "price":20,
+        "thumbnail":"url.com/url",
+        "id": 1
+    },
+    {
+        "name":"Pants",
+        "price":25,
+        "thumbnail":"url.com/url",
+        "id": 2
+    },
+    {
+      "name": "Shoe",
+      "price": 30,
+      "thumbnail": "url.com/url",
+      "id": 3
+    },
+    {
+      "name": "Stocking",
+      "price": 10,
+      "thumbnail": "url.com/urll",
+      "id": 4
+    }
+  ]
