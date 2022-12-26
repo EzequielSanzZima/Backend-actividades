@@ -1,0 +1,157 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Users\EzequielS> mongo
+MongoDB shell version v5.0.14
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("516a633a-2a84-4e24-ab52-f6597adef02a") }
+MongoDB server version: 5.0.14
+================
+Warning: the "mongo" shell has been superseded by "mongosh",
+which delivers improved usability and compatibility.The "mongo" shell has been deprecated and will be removed in
+an upcoming release.
+For installation instructions, see
+https://docs.mongodb.com/mongodb-shell/install/
+================
+---
+The server generated these startup warnings when booting:
+        2022-12-23T12:52:54.564-03:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+>
+> use ecommerceMongoShell
+switched to db ecommerceMongoShell
+>
+> db.users.insertMany([{
+...     "name": "calculadora",
+...     "price": 120
+... },{
+...     "name": "Lapicera",
+...     "price": 580
+... },{
+...     "name": "Hojas A4",
+...     "price": 900
+... },{
+...     "name": "Fibron negro",
+...     "price": 1280
+... },{
+...     "name": "24 Lapices de colores",
+...     "price": 1700
+... },{
+...     "name": "Plasticola",
+...     "price": 2300
+... },{
+...     "name": "Escuadra",
+...     "price": 2860
+... },{
+...     "name": "Compas",
+...     "price": 3350
+... },{
+...     "name": "Regla",
+...     "price": 4320
+... },{
+...     "name": "Kit de matematica",
+...     "price": 4990
+... }])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("63a8f1d68a7c25a48a940025"),
+                ObjectId("63a8f1d68a7c25a48a940026"),
+                ObjectId("63a8f1d68a7c25a48a940027"),
+                ObjectId("63a8f1d68a7c25a48a940028"),
+                ObjectId("63a8f1d68a7c25a48a940029"),
+                ObjectId("63a8f1d68a7c25a48a94002a"),
+                ObjectId("63a8f1d68a7c25a48a94002b"),
+                ObjectId("63a8f1d68a7c25a48a94002c"),
+                ObjectId("63a8f1d68a7c25a48a94002d"),
+                ObjectId("63a8f1d68a7c25a48a94002e")
+        ]
+}
+>
+> db.users.insert({"name": "Peluche", "price": 299})
+WriteResult({ "nInserted" : 1 })
+>
+> db.users.find({"price": {$lt: 1000}})
+{ "_id" : ObjectId("63a8f1d68a7c25a48a940025"), "name" : "calculadora", "price" : 120 }
+{ "_id" : ObjectId("63a8f1d68a7c25a48a940026"), "name" : "Lapicera", "price" : 580 }
+{ "_id" : ObjectId("63a8f1d68a7c25a48a940027"), "name" : "Hojas A4", "price" : 900 }
+{ "_id" : ObjectId("63a8f1dd8a7c25a48a94002f"), "name" : "Peluche", "price" : 299 }
+>
+> db.users.find({"price": { $gt: 1000, $lt: 3000}});
+{ "_id" : ObjectId("63a8f1d68a7c25a48a940028"), "name" : "Fibron negro", "price" : 1280 }
+{ "_id" : ObjectId("63a8f1d68a7c25a48a940029"), "name" : "24 Lapices de colores", "price" : 1700 }
+{ "_id" : ObjectId("63a8f1d68a7c25a48a94002a"), "name" : "Plasticola", "price" : 2300 }
+{ "_id" : ObjectId("63a8f1d68a7c25a48a94002b"), "name" : "Escuadra", "price" : 2860 }
+>
+> db.users.find({"price": {$gte: 3000}})
+{ "_id" : ObjectId("63a8f1d68a7c25a48a94002c"), "name" : "Compas", "price" : 3350 }
+{ "_id" : ObjectId("63a8f1d68a7c25a48a94002d"), "name" : "Regla", "price" : 4320 }
+{ "_id" : ObjectId("63a8f1d68a7c25a48a94002e"), "name" : "Kit de matematica", "price" : 4990 }
+>
+> db.users.find({"price": {$lt: 1000}}, {"name":1}).skip(2).limit(1)
+{ "_id" : ObjectId("63a8f1d68a7c25a48a940027"), "name" : "Hojas A4" }
+>
+> db.users.updateMany({}, {$set:{"stock": 100}})
+{ "acknowledged" : true, "matchedCount" : 11, "modifiedCount" : 11 }
+> db.users.find()
+{ "_id" : ObjectId("63a8f1d68a7c25a48a940025"), "name" : "calculadora", "price" : 120, "stock" : 100 }
+{ "_id" : ObjectId("63a8f1d68a7c25a48a940026"), "name" : "Lapicera", "price" : 580, "stock" : 100 }
+{ "_id" : ObjectId("63a8f1d68a7c25a48a940027"), "name" : "Hojas A4", "price" : 900, "stock" : 100 }
+{ "_id" : ObjectId("63a8f1d68a7c25a48a940028"), "name" : "Fibron negro", "price" : 1280, "stock" : 100 }
+{ "_id" : ObjectId("63a8f1d68a7c25a48a940029"), "name" : "24 Lapices de colores", "price" : 1700, "stock" : 100 }
+{ "_id" : ObjectId("63a8f1d68a7c25a48a94002a"), "name" : "Plasticola", "price" : 2300, "stock" : 100 }
+{ "_id" : ObjectId("63a8f1d68a7c25a48a94002b"), "name" : "Escuadra", "price" : 2860, "stock" : 100 }
+{ "_id" : ObjectId("63a8f1d68a7c25a48a94002c"), "name" : "Compas", "price" : 3350, "stock" : 100 }
+{ "_id" : ObjectId("63a8f1d68a7c25a48a94002d"), "name" : "Regla", "price" : 4320, "stock" : 100 }
+{ "_id" : ObjectId("63a8f1d68a7c25a48a94002e"), "name" : "Kit de matematica", "price" : 4990, "stock" : 100 }
+{ "_id" : ObjectId("63a8f1dd8a7c25a48a94002f"), "name" : "Peluche", "price" : 299, "stock" : 100 }
+>
+> db.users.updateMany({"price": {$gte: 4000}}, {$set:{"stock": 0}})
+{ "acknowledged" : true, "matchedCount" : 2, "modifiedCount" : 0 }
+> db.users.find()
+{ "_id" : ObjectId("63a8f1d68a7c25a48a940025"), "name" : "calculadora", "price" : 120, "stock" : 100 }
+{ "_id" : ObjectId("63a8f1d68a7c25a48a940026"), "name" : "Lapicera", "price" : 580, "stock" : 100 }
+{ "_id" : ObjectId("63a8f1d68a7c25a48a940027"), "name" : "Hojas A4", "price" : 900, "stock" : 100 }
+{ "_id" : ObjectId("63a8f1d68a7c25a48a940028"), "name" : "Fibron negro", "price" : 1280, "stock" : 100 }
+{ "_id" : ObjectId("63a8f1d68a7c25a48a940029"), "name" : "24 Lapices de colores", "price" : 1700, "stock" : 100 }
+{ "_id" : ObjectId("63a8f1d68a7c25a48a94002a"), "name" : "Plasticola", "price" : 2300, "stock" : 100 }
+{ "_id" : ObjectId("63a8f1d68a7c25a48a94002b"), "name" : "Escuadra", "price" : 2860, "stock" : 100 }
+{ "_id" : ObjectId("63a8f1d68a7c25a48a94002c"), "name" : "Compas", "price" : 3350, "stock" : 100 }
+{ "_id" : ObjectId("63a8f1d68a7c25a48a94002d"), "name" : "Regla", "price" : 4320, "stock" : 0 }
+{ "_id" : ObjectId("63a8f1d68a7c25a48a94002e"), "name" : "Kit de matematica", "price" : 4990, "stock" : 0 }
+{ "_id" : ObjectId("63a8f1dd8a7c25a48a94002f"), "name" : "Peluche", "price" : 299, "stock" : 100 }
+>
+> db.users.deleteMany({"price": {$lt: 1000}})
+{ "acknowledged" : true, "deletedCount" : 4 }
+> db.users.find()
+{ "_id" : ObjectId("63a8f1d68a7c25a48a940028"), "name" : "Fibron negro", "price" : 1280, "stock" : 100 }
+{ "_id" : ObjectId("63a8f1d68a7c25a48a940029"), "name" : "24 Lapices de colores", "price" : 1700, "stock" : 100 }
+{ "_id" : ObjectId("63a8f1d68a7c25a48a94002a"), "name" : "Plasticola", "price" : 2300, "stock" : 100 }
+{ "_id" : ObjectId("63a8f1d68a7c25a48a94002b"), "name" : "Escuadra", "price" : 2860, "stock" : 100 }
+{ "_id" : ObjectId("63a8f1d68a7c25a48a94002c"), "name" : "Compas", "price" : 3350, "stock" : 100 }
+{ "_id" : ObjectId("63a8f1d68a7c25a48a94002d"), "name" : "Regla", "price" : 4320, "stock" : 0 }
+{ "_id" : ObjectId("63a8f1d68a7c25a48a94002e"), "name" : "Kit de matematica", "price" : 4990, "stock" : 0 }
+>
+> db.createUser({user:"pepe", pwd:"asd456", roles:[{role:"read", db:"ecommerceMongoShell"}]})
+Successfully added user: {
+        "user" : "pepe",
+        "roles" : [
+                {
+                        "role" : "read",
+                        "db" : "ecommerceMongoShell"
+                }
+        ]
+}

@@ -1,0 +1,59 @@
+Comandos para el entregable:
+
+db.users.insertMany([{
+    "name": "calculadora",
+    "price": 120
+},{
+    "name": "Lapicera",
+    "price": 580
+},{
+    "name": "Hojas A4",
+    "price": 900
+},{
+    "name": "Fibron negro",
+    "price": 1280
+},{
+    "name": "24 Lapices de colores",
+    "price": 1700
+},{
+    "name": "Plasticola",
+    "price": 2300
+},{
+    "name": "Escuadra",
+    "price": 2860
+},{
+    "name": "Compas",
+    "price": 3350
+},{
+    "name": "Regla",
+    "price": 4320
+},{
+    "name": "Kit de matematica",
+    "price": 4990
+}])
+
+db.users.insert({"name": "Peluche", "price": 299})
+
+db.users.find({"price": {$lt: 1000}})
+
+db.users.find({"price": { $gt: 1000, $lt: 3000}});
+
+db.users.find({"price": {$gte: 3000}})
+
+db.users.find({"price": {$lt: 1000}}, {"name":1}).skip(2).limit(1)
+
+db.users.updateMany({}, {$set:{"stock": 100}})
+db.users.find()
+
+db.users.updateMany({"price": {$gte: 4000}}, {$set:{"stock": 0}})
+db.users.find()
+
+db.users.deleteMany({"price": {$lt: 1000}})
+db.users.find()
+
+db.createUser({user:"pepe", pwd:"asd456", roles:[{role:"read", db:"ecommerceMongoShell"}]})
+
+
+
+db.users.deleteMany({})
+db.users.remove({username: "pepe"})
