@@ -1,0 +1,45 @@
+<div class="container pt-3">
+    <h2>Ingrese su producto</h2>
+    <form form id="productForm">
+        <div class="mb-3">
+            <label for='title' , class='form-label'>Nombre del producto</label>
+            <input type='text' , class='form-control' , name='title' , id="title">
+        </div>
+        <div class="mb-3">
+            <label for='price' , class='form-label'>Precio del producto</label>
+            <input type="number" , class='form-control' , name='price' , id="price">
+        </div>
+        <div class="mb-3">
+            <label for='thumbnail' , class='form-label'>Imagen</label>
+            <input type="text" , class='form-control' , name='thumbnail' , id="thumbnail" , aria-describedby='examples'>
+        </div>
+        <button type="submit" , class='btn btn-success me-2'>Enviar</button>
+    </form>
+    <div id="productsContainer"></div>
+</div>
+
+<div class="container">
+    <h3>Mensajeria</h3>
+    <h1>Centro de Mensajes (Compresión: <span id="compresion-info"></span>%)</h1>
+    <br/>
+
+    <p id="email"></p>
+    <form id="chatForm">
+        <input type="email" id="authorId" placeholder="Ingresa tu email" />
+        <input type="name" id="authorName" placeholder="Ingresa tu nombre" />
+        <input type="lastName" id="authorLastName" placeholder="Ingresa tu apellido" />
+        <input type="age" id="authorAge" placeholder="Ingresa tu edad" />
+        <input type="user" id="authorUsername" placeholder="Ingresa tu nombre de usuario" />
+        <input type="avatar" id="authorAvatar" placeholder="Ingresa tu foto (formato url)" />
+        <input id="inputMensaje" id="text" type="text" placeholder="Ingresa un mensaje..."/>
+        <button id="btnEnviar" type="submit">Enviar</button>
+    </form>
+
+    <div id="chatContainer"></div>
+</div>
+
+
+{{> importScripts }}
+<script src="./socket.io/socket.io.js"></script>
+<script src="pIndex.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/normalizr@3.6.1/dist/normalizr.browser.min.js"></script>

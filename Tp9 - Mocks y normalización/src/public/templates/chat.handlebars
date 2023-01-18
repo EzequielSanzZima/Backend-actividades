@@ -1,0 +1,13 @@
+{{#if messages}}
+  {{#each messages}}
+    <p><span>{{this.avatar}}</span>
+      <span style="color:blue"><b>{{this.mail}}</b></span>
+      <span>{{this.name}}</span>
+      <span>{{this.lastNameValue}}</span>
+
+      <span style="color:brown"> {{this.date}}</span>
+      <span style="color:green"><i>{{this.textValue}}</i> </span></p>
+  {{/each}}
+{{else}}
+  <p>No hay ningun mensaje.</p>
+{{/if}}
