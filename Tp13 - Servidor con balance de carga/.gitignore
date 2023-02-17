@@ -1,0 +1,5 @@
+/nginx
+
+/Proyecto/node_modules
+.env
+.env.development
